@@ -4,6 +4,7 @@ import os
 import re
 import requests
 import time
+import shutil
 from urllib.parse import urlparse
 from pathlib import Path
 
@@ -11,8 +12,16 @@ def download_gitpod_docs():
     """Download all Gitpod documentation markdown files with proper folder structure."""
     
     base_dir = Path("gitpod-docs")
-    base_dir.mkdir(exist_ok=True)
     
+    # Remove existing directory if it exists
+    if base_dir.exists():
+        print(f"Removing existing {base_dir} directory...")
+        shutil.rmtree(base_dir)
+    
+    # Create fresh directory
+    base_dir.mkdir(exist_ok=True)
+    print(f"Created fresh {base_dir} directory")
+
     print("Fetching llms.txt to get list of markdown files...")
     
     # Fetch the llms.txt file
