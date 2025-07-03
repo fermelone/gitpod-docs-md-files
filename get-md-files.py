@@ -58,9 +58,13 @@ def download_gitpod_docs():
             parsed_url = urlparse(url)
             relative_path = parsed_url.path.replace('/docs/', '')
             
+            # Remove the 'gitpod/' prefix if it exists to avoid nested gitpod folder
+            if relative_path.startswith('gitpod/'):
+                relative_path = relative_path[7:]  # Remove 'gitpod/' prefix
+            
             # Create local path
             local_path = base_dir / relative_path
-            
+
             # Create directory structure
             local_path.parent.mkdir(parents=True, exist_ok=True)
             
