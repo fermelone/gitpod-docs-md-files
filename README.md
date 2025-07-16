@@ -1,4 +1,9 @@
-# Gitpod Documentation Downloader
+# UPDATE
+
+This repo can now be replaced by this: https://www.gitpod.io/docs/llms-full.txt
+
+---
+## Gitpod Documentation Downloader
 
 A Python script that downloads all Gitpod documentation markdown files from their website, maintaining the original folder structure for local access and analysis.
 
